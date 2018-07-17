@@ -54,9 +54,7 @@ public class MageApiProxy extends HttpServlet {
                 .header(Constants.CONTENT_TYPE, Constants.MEDIA_TYPE_JSON)
                 .url(sURI);
 
-        if(apiRequest.getsRequestType().toUpperCase().equals(Constants.GET)){
-            System.out.println("GET -- NO BODY");
-        }else{
+        if(!apiRequest.getsRequestType().toUpperCase().equals(Constants.GET)){
             byte[] json = apiRequest.getsBody().getBytes();
             okrequestbuilder.post(RequestBody.create(MediaType.parse(Constants.MEDIA_TYPE_JSON), json));
         }
